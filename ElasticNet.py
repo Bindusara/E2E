@@ -1,6 +1,7 @@
 import os
 import warnings
 import sys
+import dagshub
 
 import pandas as pd
 import numpy as np
@@ -14,6 +15,9 @@ import mlflow.sklearn
 from mlflow.models import infer_signature
 from itertools import product
 import logging
+
+os.environ['MLFLOW_TRACKING_USERNAME'] = 'bindusara007'
+os.environ['MLFLOW_TRACKING_PASSWORD'] = 'e8b66976bf29ade7fc08e9ebb6c3b0bda784edd4'
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
@@ -54,6 +58,9 @@ if __name__ == "__main__":
     l1_ratio = [0.2, 0.4]
     
     mlflow.autolog()
+    mlflow.set_tracking_uri('https://dagshub.com/bindusara007/E2E.mlflow')
+    
+    # dagshub.init(repo_owner='bindusara007', repo_name='E2E', mlflow=True)
 
     with mlflow.start_run(run_name="Hyperparameter_Tuning") as parent_run:
         mlflow.log_param("tuning_method", "grid_search")
@@ -79,10 +86,6 @@ if __name__ == "__main__":
                 mlflow.log_metric("rmse", rmse)
                 mlflow.log_metric("r2", r2)
                 mlflow.log_metric("mae", mae)
-                
-                
-                remote_server_uri = "https://dagshub.com/bindusara007/E2E.mlflow"
-                mlflow.set_tracking_uri(remote_server_uri)              
 
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
