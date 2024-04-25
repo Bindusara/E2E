@@ -16,12 +16,14 @@ from mlflow.models import infer_signature
 from itertools import product
 import logging
 
-os.environ['MLFLOW_TRACKING_USERNAME'] = 'bindusara007'
-os.environ['MLFLOW_TRACKING_PASSWORD'] = 'e8b66976bf29ade7fc08e9ebb6c3b0bda784edd4'
+# os.environ['MLFLOW_TRACKING_USERNAME'] = 'bindusara007'
+# os.environ['MLFLOW_TRACKING_PASSWORD'] = 'e8b66976bf29ade7fc08e9ebb6c3b0bda784edd4'
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
+dagshub.init(repo_owner='bindusara007', repo_name='E2E', mlflow=True)
+mlflow.set_tracking_uri('https://dagshub.com/bindusara007/E2E.mlflow')
 
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
@@ -54,13 +56,10 @@ if __name__ == "__main__":
     train_y = train[["quality"]]
     test_y = test[["quality"]]
 
-    alpha = [0.3, 0.5, 0.7]
-    l1_ratio = [0.2, 0.4]
+    alpha = [0.2, 0.6, 0.8]
+    l1_ratio = [0.5, 0.7]
     
     mlflow.autolog()
-    mlflow.set_tracking_uri('https://dagshub.com/bindusara007/E2E.mlflow')
-    
-    # dagshub.init(repo_owner='bindusara007', repo_name='E2E', mlflow=True)
 
     with mlflow.start_run(run_name="Hyperparameter_Tuning") as parent_run:
         mlflow.log_param("tuning_method", "grid_search")
