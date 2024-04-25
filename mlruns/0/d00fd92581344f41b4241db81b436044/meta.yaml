@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Mechatronics/Courses/ML_Ops/MLflow/Runs/E2E/WIneExmpl/mlruns/0/d00fd92581344f41b4241db81b436044/artifacts
+end_time: 1714044769102
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d00fd92581344f41b4241db81b436044
+run_name: intrigued-ox-38
+run_uuid: d00fd92581344f41b4241db81b436044
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714044769036
+status: 3
+tags: []
+user_id: bindu

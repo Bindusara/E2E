@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Mechatronics/Courses/ML_Ops/MLflow/Runs/E2E/WIneExmpl/mlruns/0/bb65966c7d64400c976106babba3c758/artifacts
+end_time: 1714044768895
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bb65966c7d64400c976106babba3c758
+run_name: victorious-yak-868
+run_uuid: bb65966c7d64400c976106babba3c758
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714044768863
+status: 3
+tags: []
+user_id: bindu
