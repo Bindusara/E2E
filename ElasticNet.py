@@ -53,7 +53,7 @@ if __name__ == "__main__":
     alpha = [0.3, 0.5, 0.7]
     l1_ratio = [0.2, 0.4]
     
-    # mlflow.autolog()
+    mlflow.autolog()
 
     with mlflow.start_run(run_name="Hyperparameter_Tuning") as parent_run:
         mlflow.log_param("tuning_method", "grid_search")
@@ -80,8 +80,9 @@ if __name__ == "__main__":
                 mlflow.log_metric("r2", r2)
                 mlflow.log_metric("mae", mae)
                 
-                predictions = lr.predict(train_x)
-                signature = infer_signature(train_x, predictions)
+                
+                remote_server_uri = "https://dagshub.com/bindusara007/E2E.mlflow"
+                mlflow.set_tracking_uri(remote_server_uri)              
 
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
