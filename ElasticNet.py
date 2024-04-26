@@ -1,7 +1,7 @@
 import os
 import warnings
 import sys
-import dagshub
+# import dagshub
 
 import pandas as pd
 import numpy as np
@@ -16,14 +16,20 @@ from mlflow.models import infer_signature
 from itertools import product
 import logging
 
+from sys import version_info
+import cloudpickle
+import mlflow.pyfunc
+
 # os.environ['MLFLOW_TRACKING_USERNAME'] = 'bindusara007'
 # os.environ['MLFLOW_TRACKING_PASSWORD'] = 'e8b66976bf29ade7fc08e9ebb6c3b0bda784edd4'
 
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
-dagshub.init(repo_owner='bindusara007', repo_name='E2E', mlflow=True)
-mlflow.set_tracking_uri('https://dagshub.com/bindusara007/E2E.mlflow')
+#dagshub.init(repo_owner='bindusara007', repo_name='E2E', mlflow=True)
+#mlflow.set_tracking_uri('https://dagshub.com/bindusara007/E2E.mlflow')
+
+# mlflow.set_tracking_uri('http://ec2-3-88-101-45.compute-1.amazonaws.com:5000/') # For aws instance
 
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
